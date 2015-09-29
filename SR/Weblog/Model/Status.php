@@ -2,14 +2,30 @@
 
 namespace SR\Weblog\Model;
 
-class Status
+class Status implements \Magento\Framework\Option\ArrayInterface
 {
     /**#@+
-     * Blog Status values
+     * Status values
      */
     const STATUS_ENABLED = 1;
 
     const STATUS_DISABLED = 2;
+
+    /**
+     * Retrieve status options array.
+     *
+     * @return array
+     */
+    public function toOptionArray()
+    {
+        $result = [];
+
+        foreach (self::getOptionArray() as $index => $value) {
+            $result[] = ['value' => $index, 'label' => $value];
+        }
+
+        return $result;
+    }
 
     /**
      * Retrieve option array

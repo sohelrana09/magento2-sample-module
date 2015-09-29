@@ -1,84 +1,19 @@
 <?php
 namespace SR\Weblog\Block\Adminhtml;
 
-class Blog extends \Magento\Backend\Block\Widget\Container
+class Blog extends \Magento\Backend\Block\Widget\Grid\Container
 {
     /**
-     * @var string
-     */
-    protected $_template = 'weblog/blog.phtml';
-
-    /**
-     * @param \Magento\Backend\Block\Widget\Context $context
-     * @param array $data
-     */
-    public function __construct(
-        \Magento\Backend\Block\Widget\Context $context,
-        array $data = []
-    ) {
-        parent::__construct($context, $data);
-    }
-
-    /**
-     * Prepare button and grid
+     * Constructor
      *
-     * @return \Magento\Catalog\Block\Adminhtml\Product
+     * @return void
      */
-    protected function _prepareLayout()
+    protected function _construct()
     {
-        $addButtonProps = [
-            'id' => 'add_new_blog_post',
-            'label' => __('Add New'),
-            'class' => 'add',
-            'button_class' => '',
-            'class_name' => 'Magento\Backend\Block\Widget\Button\SplitButton',
-            'options' => $this->_getAddButtonOptions(),
-        ];
-        $this->buttonList->add('add_new', $addButtonProps);
-
-        $this->setChild(
-            'grid',
-            $this->getLayout()->createBlock('SR\Weblog\Block\Adminhtml\Blog\Grid', 'weblog.blogpost.grid')
-        );
-        return parent::_prepareLayout();
-    }
-
-    /**
-     *
-     *
-     * @return array
-     */
-    protected function _getAddButtonOptions()
-    {
-
-        $splitButtonOptions[] = [
-            'label' => __('Add New'),
-            'onclick' => "setLocation('" . $this->_getCreateUrl() . "')"
-        ];
-
-        return $splitButtonOptions;
-    }
-
-    /**
-     *
-     *
-     * @param string $type
-     * @return string
-     */
-    protected function _getCreateUrl()
-    {
-        return $this->getUrl(
-            'weblog/*/new'
-        );
-    }
-
-    /**
-     * Render grid
-     *
-     * @return string
-     */
-    public function getGridHtml()
-    {
-        return $this->getChildHtml('grid');
+        $this->_controller = 'adminhtml';
+        $this->_blockGroup = 'SR_Weblog';
+        $this->_headerText = __('Manage Blog Post');
+        $this->_addButtonLabel = __('Add New Blog Post');
+        parent::_construct();
     }
 }

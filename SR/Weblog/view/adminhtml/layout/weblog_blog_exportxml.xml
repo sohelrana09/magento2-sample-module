@@ -2,8 +2,6 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
     <update handle="weblog_blog_grid_block"/>
     <body>
-        <referenceContainer name="content">
-            <block class="SR\Weblog\Block\Adminhtml\Blog" name="weblog.grid.container" />
-        </referenceContainer>
+        <block class="Magento\Backend\Block\Widget\Grid\Container" name="weblog.grid.container" template="Magento_Backend::widget/grid/container/empty.phtml"/>
     </body>
 </page>
