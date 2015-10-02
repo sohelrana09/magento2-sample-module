@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="order_info">
+            <action method="setTemplate">
+                <argument name="template" translate="true" xsi:type="string">order/view/info.phtml</argument>
+            </action>
+        </referenceBlock>
+        <referenceBlock name="order_info">
+            <block class="SR\RewriteSales\Block\Adminhtml\Order\View\Custom" name="sales_order_view_custom" template="order/view/custom.phtml" />
+        </referenceBlock>
+    </body>
+</page>

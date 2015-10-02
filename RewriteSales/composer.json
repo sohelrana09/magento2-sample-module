@@ -1,0 +1,19 @@
+{
+  "name": "sr/module-rewritesales",
+  "description": "RewriteSales",
+  "require": {
+    "magento/module-config": "1.0.0-beta",
+    "magento/module-store": "1.0.0-beta",
+    "magento/framework": "1.0.0-beta",
+    "magento/magento-composer-installer": "*"
+  },
+  "type": "magento2-module",
+  "extra": {
+    "map": [
+      [
+        "*",
+        "SR/RewriteSales"
+      ]
+    ]
+  }
+}
