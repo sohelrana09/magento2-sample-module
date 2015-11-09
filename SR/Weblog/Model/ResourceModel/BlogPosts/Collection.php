@@ -1,8 +1,13 @@
 <?php
-namespace SR\Weblog\Model\Resource\BlogPosts;
+namespace SR\Weblog\Model\ResourceModel\BlogPosts;
 
-class Collection extends \Magento\Framework\Model\Resource\Db\Collection\AbstractCollection
+class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
 {
+
+    /**
+     * @var string
+     */
+    protected $_idFieldName = 'blogpost_id';
 
     /**
      * Define resource model
@@ -11,8 +16,8 @@ class Collection extends \Magento\Framework\Model\Resource\Db\Collection\Abstrac
      */
     protected function _construct()
     {
-        $this->_init('SR\Weblog\Model\BlogPosts', 'SR\Weblog\Model\Resource\BlogPosts');
-        $this->_map['fields']['page_id'] = 'main_table.page_id';
+        $this->_init('SR\Weblog\Model\BlogPosts', 'SR\Weblog\Model\ResourceModel\BlogPosts');
+        $this->_map['fields']['blogpost_id'] = 'main_table.blogpost_id';
     }
 
     /**

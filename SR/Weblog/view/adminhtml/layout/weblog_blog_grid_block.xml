@@ -5,7 +5,7 @@
             <block class="Magento\Backend\Block\Widget\Grid" name="weblog.grid" as="grid">
                 <arguments>
                     <argument name="id" xsi:type="string">weblogGrid</argument>
-                    <argument name="dataSource" xsi:type="object">SR\Weblog\Model\Resource\BlogPosts\Collection</argument>
+                    <argument name="dataSource" xsi:type="object">SR\Weblog\Model\ResourceModel\BlogPosts\Collection</argument>
                     <argument name="default_sort" xsi:type="string">id</argument>
                     <argument name="default_dir" xsi:type="string">desc</argument>
                     <argument name="save_parameters_in_session" xsi:type="string">1</argument>

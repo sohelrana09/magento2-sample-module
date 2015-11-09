@@ -7,9 +7,9 @@ use Magento\Ui\Component\MassAction\Filter;
 use SR\Weblog\Model\ResourceModel\BlogPosts\CollectionFactory;
 
 /**
- * Class MassDelete
+ * Class MassDisable
  */
-class MassDelete extends \Magento\Backend\App\Action
+class MassDisable extends \Magento\Backend\App\Action
 {
     /**
      * @var Filter
@@ -42,13 +42,13 @@ class MassDelete extends \Magento\Backend\App\Action
     public function execute()
     {
         $collection = $this->filter->getCollection($this->collectionFactory->create());
-        $collectionSize = $collection->getSize();
 
-        foreach ($collection as $page) {
-            $page->delete();
+        foreach ($collection as $item) {
+            $item->setIsActive(false);
+            $item->save();
         }
 
-        $this->messageManager->addSuccess(__('A total of %1 record(s) have been deleted.', $collectionSize));
+        $this->messageManager->addSuccess(__('A total of %1 record(s) have been disabled.', $collection->getSize()));
 
         /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
         $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);

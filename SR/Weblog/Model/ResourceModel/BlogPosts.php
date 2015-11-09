@@ -1,7 +1,7 @@
 <?php
-namespace SR\Weblog\Model\Resource;
+namespace SR\Weblog\Model\ResourceModel;
 
-class BlogPosts extends \Magento\Framework\Model\Resource\Db\AbstractDb
+class BlogPosts extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
 {
     /**
      * Initialize resource model

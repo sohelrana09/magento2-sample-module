@@ -10,6 +10,6 @@ class BlogPosts extends \Magento\Framework\Model\AbstractModel
      */
     protected function _construct()
     {
-        $this->_init('SR\Weblog\Model\Resource\BlogPosts');
+        $this->_init('SR\Weblog\Model\ResourceModel\BlogPosts');
     }
 }
