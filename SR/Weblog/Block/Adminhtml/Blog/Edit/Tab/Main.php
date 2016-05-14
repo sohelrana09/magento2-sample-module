@@ -12,10 +12,6 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
      */
     protected $_systemStore;
 
-    /**
-     * @var \Magento\Cms\Model\Wysiwyg\Config
-     */
-    protected $_wysiwygConfig;
 
     /**
      * @var \SR\Weblog\Model\Status
@@ -34,12 +30,10 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
         \Magento\Framework\Registry $registry,
         \Magento\Framework\Data\FormFactory $formFactory,
         \Magento\Store\Model\System\Store $systemStore,
-        \Magento\Cms\Model\Wysiwyg\Config $wysiwygConfig,
         \SR\Weblog\Model\Status $status,
         array $data = []
     ) {
         $this->_systemStore = $systemStore;
-        $this->_wysiwygConfig = $wysiwygConfig;
         $this->_status = $status;
         parent::__construct($context, $registry, $formFactory, $data);
     }
@@ -80,27 +74,15 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
             ]
         );
 
-        $wysiwygConfig = $this->_wysiwygConfig->getConfig(['tab_id' => $this->getTabId()]);
-
-        $contentField = $fieldset->addField(
+        $fieldset->addField(
             'content',
-            'editor',
+            'SR\Weblog\Block\Adminhtml\Blog\Editor\Editor',
             [
                 'name' => 'content',
-                'style' => 'height:36em;',
+                'label' => __('Details'),
                 'required' => true,
-                'disabled' => $isElementDisabled,
-                'config' => $wysiwygConfig
             ]
         );
-
-        // Setting custom renderer for content field to remove label column
-        $renderer = $this->getLayout()->createBlock(
-            'Magento\Backend\Block\Widget\Form\Renderer\Fieldset\Element'
-        )->setTemplate(
-            'Magento_Cms::page/edit/form/renderer/content.phtml'
-        );
-        $contentField->setRenderer($renderer);
 
 
         $dateFormat = $this->_localeDate->getDateFormat(
